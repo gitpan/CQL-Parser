@@ -113,7 +113,7 @@ sub toXCQL {
         }
         $buffer .= indent($level+1)."</modifiers>\n";
     }
-    $buffer .= indent($level).'<'.$topLevelElement.">\n";
+    $buffer .= indent($level).'</'.$topLevelElement.">\n";
     return $buffer;
 }
 

@@ -24,7 +24,7 @@ QUALIFIER_AND_RELATION: {
     my $xcql = $node->toXCQL(0);
     $xcql =~ s/[\r\n]//g;
     $xcql =~ s/> +</></g;
-    is( $xcql, "<searchClause><index>dc.creator</index><relation><value>=</value><relation><term>george</term></searchClause>", 'toXCQL()' )
+    is( $xcql, "<searchClause><index>dc.creator</index><relation><value>=</value></relation><term>george</term></searchClause>", 'toXCQL()' )
 }
 
 SPACES_IN_TERM: {
