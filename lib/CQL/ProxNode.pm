@@ -12,7 +12,8 @@ CQL::ProxNode - represents a PROX node in a CQL parse tree
 =head1 SYNOPSIS
 
     use CQL::ProxNode;
-    my $node = CQL::ProxNode->new( left => $left, right => $right );
+    my $node = CQL::ProxNode->new( left => $left );
+    $node->addSecondTerm( $right );
 
 =head1 DESCRIPTION
 

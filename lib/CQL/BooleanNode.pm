@@ -66,6 +66,21 @@ sub toCQL {
         ' (' . $right->toCQL() . ')';
 }
 
+=head2 toSwish()
+
+=cut
+
+sub toSwish {
+    my $self = shift;
+    my $left = $self->left();
+    my $right = $self->right();
+    my $leftStr = $left->isa('CQL::TermNode') ? $left->toSwish() 
+        : '('.$left->toSwish().')';  
+    my $rightStr = $right->isa('CQL::TermNode') ? $right->toSwish() 
+        : '('.$right->toSwish().')';
+    return  $leftStr . " " . $self->op() . " " . $rightStr;
+}
+
 =head2 toXCQL()
 
 =cut

@@ -89,6 +89,24 @@ sub toCQL {
     return $cql;
 }
 
+=head2 toSwish()
+
+=cut
+
+sub toSwish {
+    my $self = shift;
+    my $qualifier = maybeQuote( $self->getQualifier() );
+    my $term = maybeQuote( $self->getTerm() );
+    my $relation = $self->getRelation();
+    my $swish; 
+    if ( $qualifier and $qualifier !~ /srw\.serverChoice/i ) { 
+        $swish = join( ' ', $qualifier, $relation->toSwish(), $term );
+    } else {
+        $swish = $term;
+    }
+    return $swish;
+}
+
 =head2 toXCQL()
 
 =cut

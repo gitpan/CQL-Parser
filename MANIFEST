@@ -14,6 +14,7 @@ lib/CQL/Relation.pm
 lib/CQL/TermNode.pm
 lib/CQL/Token.pm
 lib/CQL/Utils.pm
+lib/CQL/Visitor.pm
 Makefile.PL
 MANIFEST
 README
@@ -22,6 +23,8 @@ t/lexer.t
 t/parser.t
 t/prefix.t
 t/relation.t
+t/swish.t
 t/term.t
 t/token.t
+t/visitor.t
 META.yml                                Module meta-data (added by MakeMaker)

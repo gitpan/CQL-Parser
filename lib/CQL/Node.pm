@@ -26,4 +26,10 @@ sub toCQL {
     croak( ref($self) . " forgot to implement toCQL()!!!" );
 }
 
+sub toSwish {
+    my $self = shift;
+    ## poor mans interface
+    croak( ref($self) . " forgot to implement toSwish()!!!" );
+}
+
 1;

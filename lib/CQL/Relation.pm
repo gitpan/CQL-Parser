@@ -76,6 +76,14 @@ sub toCQL {
     return shift->{modifierSet}->toCQL();
 }
 
+=head2 toSwish()
+
+=cut
+
+sub toSwish {
+    return shift->{modifierSet}->toSwish();
+}
+
 =head2 toXCQL()
 
 =cut

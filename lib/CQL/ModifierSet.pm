@@ -3,6 +3,7 @@ package CQL::ModifierSet;
 use strict;
 use warnings;
 use CQL::Utils qw( indent xq );
+use Carp qw( croak );
 
 =head1 NAME
 
@@ -12,7 +13,7 @@ CQL::ModifierSet - represents a base string and modifier strings
 
 =head1 DESCRIPTION
 
-This class is used as a workhorse delegate by both CQLRelation and
+This class is used as a delegate by both CQLRelation and
 CQLProxNode - two functionally very separate classes that happen to
 require similar data structures and functionality.
 
@@ -92,6 +93,19 @@ sub toCQL {
         $cql .= "/" . $_->[1];
     }
     return $cql;
+}
+
+=head2 toSwish()
+
+=cut
+
+sub toSwish {
+    my $self = shift;
+    croak( "Swish does not support relational modifiers" )
+        if @{ $self->{modifiers} } > 0;
+    my $base = $self->getBase();
+    return $base if $base eq "=" or $base eq "not"; 
+    croak( "Swish doesn't support relations other than = and not" );
 }
 
 =head2 toXCQL()
