@@ -90,7 +90,8 @@ sub toSwish {
 
 sub toXCQL {
     my ($self,$level) = @_;
-    return $self->{modifierSet}->toXCQL( $level, "relation" );
+    my $xml = $self->{modifierSet}->toXCQL( $level, "relation" );
+    return $self->addNamespace( $level, $xml );
 }
 
 

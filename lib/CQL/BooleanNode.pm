@@ -90,7 +90,7 @@ sub toXCQL {
     $level = 0 if ! $level;
     my $left = $self->left();
     my $right = $self->right();
-    return  
+    my $xml = 
         indent($level)."<triple>\n".
         renderPrefixes($level+1,@prefixes).
         $self->opXCQL($level+1).
@@ -101,6 +101,7 @@ sub toXCQL {
         $right->toXCQL($level+2).
         indent($level+1)."</rightOperand>\n".
         indent($level)."</triple>\n";
+    return $self->addNamespace( $level, $xml );
 }
 
 sub opXCQL {

@@ -81,8 +81,10 @@ sub toCQL {
 
 sub toXCQL {
     my ($self,$level,@prefixes) = @_;
+    $level = 0 if ! $level;
     push( @prefixes, $self->getPrefix() );
-    return $self->getSubtree()->toXCQL( $level, @prefixes );
+    my $xml = $self->getSubtree()->toXCQL( $level, @prefixes );
+    return $self->addNamespace( $level, $xml );
 }
 
 1;

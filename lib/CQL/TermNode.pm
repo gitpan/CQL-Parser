@@ -114,16 +114,17 @@ sub toSwish {
 
 sub toXCQL {
     my ($self,$level,@prefixes) = @_;
-    my $buffer = 
+    my $xml = 
         indent($level) . "<searchClause>\n" .
         renderPrefixes($level+1,@prefixes) .
         indent($level+1) . "<index>".xq($self->getQualifier())."</index>\n";
     if ( $self->getRelation() ) {
-        $buffer .= $self->getRelation()->toXCQL($level+1);
+        $xml .= $self->getRelation()->toXCQL($level+1);
     }
-    $buffer .= 
+    $xml .= 
         indent($level+1) . "<term>" . xq($self->getTerm()) . "</term>\n" . 
         indent($level) . "</searchClause>\n";
+    return $self->addNamespace( $level, $xml );
 }
 
 sub maybeQuote {

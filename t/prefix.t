@@ -28,8 +28,8 @@ is( $prefixNode->toCQL(),
 
 my $xml = $prefixNode->toXCQL();
 $xml =~ s/[\r\n]//g;
-$xml =~ s/ +//g;
+$xml =~ s/> +/>/g;
 is( $xml,
-    '<triple><prefixes><prefix><name>dc</name><identifier>http://zthes.z3950.org/cql/1.0</identifier></prefix></prefixes><boolean><value>and</value></boolean><leftOperand><searchClause><index></index><term>foo</term></searchClause></leftOperand><rightOperand><searchClause><index></index><term>bar</term></searchClause></rightOperand></triple>', 
+    '<triple xmlns="http://www.loc.gov/zing/cql/xcql/"><prefixes><prefix><name>dc</name><identifier>http://zthes.z3950.org/cql/1.0</identifier></prefix></prefixes><boolean><value>and</value></boolean><leftOperand><searchClause><index></index><term>foo</term></searchClause></leftOperand><rightOperand><searchClause><index></index><term>bar</term></searchClause></rightOperand></triple>', 
     'toXCQL()'
 );

@@ -2,7 +2,7 @@ package CQL::Visitor;
 
 =head1 NAME
 
-CQL::Visitor
+CQL::Visitor - visit nodes in a CQL parse tree
 
 =head1 SYNOPSIS
 

@@ -22,7 +22,7 @@ my $xcql = $and->toXCQL(0);
 $xcql =~ s/[\r\n]//g;
 $xcql =~ s/> +</></g;
 is( $xcql, 
-qq(<triple><boolean><value>and</value></boolean><leftOperand><searchClause><index></index><term>foo</term></searchClause></leftOperand><rightOperand><searchClause><index></index><term>bar</term></searchClause></rightOperand></triple>), 
+qq(<triple xmlns="http://www.loc.gov/zing/cql/xcql/"><boolean><value>and</value></boolean><leftOperand><searchClause><index></index><term>foo</term></searchClause></leftOperand><rightOperand><searchClause><index></index><term>bar</term></searchClause></rightOperand></triple>), 
     ,'toXCQL()' );
 
 ## OR
