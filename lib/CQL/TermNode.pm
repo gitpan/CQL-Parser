@@ -2,6 +2,7 @@ package CQL::TermNode;
 
 use strict;
 use warnings;
+use base qw( CQL::Node );
 use Carp qw( croak );
 use CQL::Utils qw( indent xq renderPrefixes );
 

@@ -13,7 +13,7 @@ use CQL::PrefixNode;
 use CQL::ProxNode;
 use Carp qw( croak );
 
-our $VERSION = '0.5';
+our $VERSION = '0.51';
 
 my $lexer;
 my $token;
