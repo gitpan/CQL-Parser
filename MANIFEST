@@ -20,6 +20,7 @@ MANIFEST
 README
 t/boolean.t
 t/clone.t
+t/error.t
 t/lexer.t
 t/parser.t
 t/prefix.t
