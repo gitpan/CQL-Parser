@@ -1,5 +1,11 @@
 Change History
 
+v0.5    Thu Dec 16 22:20:02 CST 2004
+- added ability to clone a parse tree courtesy Ray Finch's Clone
+
+v0.4    Tue Dec 14 22:21:00 CST 2004
+- added CQL::Visitor for transforming parse trees
+
 v0.3    Sun Dec  5 14:58:00 CST 2004
 - fixed bug in relation toXCQL()
 

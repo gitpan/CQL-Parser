@@ -13,5 +13,6 @@ WriteMakefile(
     'PREREQ_PM'		=> { 
                             'String::Tokenizer' => '0.05',
                             'Test::Exception'   => '0.2',
+                            'Clone'             => '0.15'
 			    },
 );
