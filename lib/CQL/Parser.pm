@@ -13,7 +13,7 @@ use CQL::PrefixNode;
 use CQL::ProxNode;
 use Carp qw( croak );
 
-our $VERSION = '0.91';
+our $VERSION = '0.92';
 
 my $lexer;
 my $token;
@@ -357,10 +357,6 @@ author.
 =head1 TODO
 
 =over 4
-
-=item * toSwish() convert CQL to swish queries
-
-=item * toLucene() convert CQL to lucene queries
 
 =item * toYourEngineHere() please feel free to add functionality and send in
 patches!
