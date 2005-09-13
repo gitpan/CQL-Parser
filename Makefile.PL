@@ -12,9 +12,8 @@ WriteMakefile(
     'AUTHOR'		=> 'Ed Summers <ehs@pobox.com>',
     'PREREQ_PM'		=> { 
                             'String::Tokenizer' => '0.05',
-                            'Test::Exception'   => '0.2',
+                            'Test::Exception'   => '0.21',
                             'Clone'             => '0.15',
-                            'Class::Accessor'   => '0.1',
-                            'Sub::Uplevel'      => 0,
+                            'Class::Accessor'   => '0.1'
 			    },
 );
