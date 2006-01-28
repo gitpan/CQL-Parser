@@ -13,7 +13,7 @@ use CQL::PrefixNode;
 use CQL::ProxNode;
 use Carp qw( croak );
 
-our $VERSION = '0.96';
+our $VERSION = '0.97';
 
 my $lexer;
 my $token;
@@ -182,15 +182,8 @@ sub parseTerm {
 
         while ($token->getType() == CQL_MODIFIER ) {
             match( $token );
-            my $type = $token->getType();
-            if ( $type != CQL_RELEVANT and $type != CQL_FUZZY 
-                and $type != CQL_STEM and $type != CQL_PHONETIC
-                and $type != CQL_WORD ) {
-                croak( "expected relation modifier got ".$token->getString() );
-            }
-            if ( $type == CQL_WORD and $token->getString() !~ /\./ ) {
-                croak( "unknown first-class relation modifier: ".
-                    $token->getString() );
+            if ( !isRelationModifier() ) {
+                croak( "expected relation modifier got " . $token->getString() );
             }
             $relation->addModifier( $token->getString() );
             match( $token );
@@ -303,6 +296,17 @@ sub isProxRelation {
     my $type = $token->getType();
     return( $type==CQL_LT or $type==CQL_GT or $type==CQL_EQ or $type==CQL_LE
         or $type==CQL_GE or $type==CQL_NE );
+}
+
+sub isRelationModifier {
+    my $type = $token->getType();
+    if ($type == CQL_WORD) {
+        return $token->getString() =~ /\./;
+    }
+    return ($type==CQL_RELEVANT or $type==CQL_FUZZY or $type==CQL_STEM
+        or $type==CQL_PHONETIC or $type==CQL_PWORD or $type==CQL_STRING
+        or $type==CQL_ISODATE or $type==CQL_NUMBER or $type==CQL_URI
+        or $type==CQL_MASKED or $type==CQL_UNMASKED);
 }
 
 sub match {
