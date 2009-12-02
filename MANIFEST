@@ -9,6 +9,7 @@ lib/CQL/OrNode.pm
 lib/CQL/Parser.pm
 lib/CQL/Prefix.pm
 lib/CQL/PrefixNode.pm
+lib/CQL/ProxModifierSet.pm
 lib/CQL/ProxNode.pm
 lib/CQL/Relation.pm
 lib/CQL/TermNode.pm
@@ -16,7 +17,7 @@ lib/CQL/Token.pm
 lib/CQL/Utils.pm
 lib/CQL/Visitor.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 README
 t/boolean.t
 t/clone.t
@@ -32,4 +33,4 @@ t/term.t
 t/token.t
 t/visitor.t
 t/whitespace.t
-META.yml                                Module meta-data (added by MakeMaker)
+META.yml                                 Module meta-data (added by MakeMaker)

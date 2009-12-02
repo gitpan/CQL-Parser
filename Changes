@@ -1,7 +1,13 @@
 Change History
 
-v1.00 Mon Nov 27 12:51:11 EST 2006
-- updated Lexer.pm and Parser.pm to allow 0 to be a valid term
+v1.10   Wed Dec 02 10:58:12 AST 2009
+- new support for v1.1 style proximity (thanks Masao Takaku at the National
+  Institute of Informatics)
+- remove use of UNIVERSAL->import
+
+v1.00   Mon Nov 27 12:51:11 EST 2006
+- updated Lexer.pm and Parser.pm to allow 0 to be a valid term (thanks Ben
+  Soares at Edinburgh University Data Library)
 - added unit tests to lexer.t and parser.t for 0 as a term
 
 v0.98   Mon Feb 13 23:13:25 EST 2006

@@ -13,7 +13,7 @@ use CQL::PrefixNode;
 use CQL::ProxNode;
 use Carp qw( croak );
 
-our $VERSION = '1.0';
+our $VERSION = '1.10';
 
 my $lexer;
 my $token;
@@ -222,6 +222,7 @@ sub parsePrefix {
 
 sub gatherProxParameters {
     my $node = shift;
+    if (0) {	# CQL 1.0 (obsolete)
     for (my $i=0; $i<4; $i++ ) {
         if ( $token->getType() != CQL_MODIFIER ) { 
             ## end of proximity parameters 
@@ -233,6 +234,28 @@ sub gatherProxParameters {
             elsif ( $i==1 ) { gatherProxDistance($node); }
             elsif ( $i==2 ) { gatherProxUnit($node); }
             elsif ( $i==3 ) { gatherProxOrdering($node); }
+        }
+    }
+    } else {
+        while ( $token->getType() == CQL_MODIFIER ) {
+	    match( $token );
+	    if ( $token->getType() == CQL_DISTANCE ) {
+		match( $token );
+		gatherProxRelation( $node );
+		gatherProxDistance( $node );
+	    } elsif ( $token->getType() == CQL_UNIT ) {
+		match( $token );
+		if ( $token->getType() != CQL_EQ ) {
+		    croak( "expected proximity unit parameter got ".$token->getString() );
+		}
+		match( $token );
+		gatherProxUnit( $node );
+	    } elsif ( $token->getType() == CQL_ORDERED
+		      || $token->getType() == CQL_UNORDERED ) {
+		gatherProxOrdering( $node );
+	    } else {
+		croak( "expected proximity parameter got ". $token->getString()  ."(". $token->getType() .")" );
+	    }
         }
     }
 }
@@ -389,9 +412,18 @@ for more information about Ockham.
 
 =item * Ed Summers - ehs at pobox dot com
 
-=item * Brian Cassidy - brian.cassidy at gmail dot com
+=item * Brian Cassidy - bricas at cpan dot org
 
 =item * Wilbert Hengst - W.Hengst at uva dot nl
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2004-2009 by Ed Summers
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself. 
 
 =cut
 
