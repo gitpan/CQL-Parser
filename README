@@ -48,9 +48,14 @@ DESCRIPTION
 
 METHODS
   new()
-  parse()
+  parse( $query )
     Pass in a CQL query and you'll get back the root node for the CQL parse
     tree. If the CQL is invalid an exception will be thrown.
+
+  parseSafe( $query )
+    Pass in a CQL query and you'll get back the root node for the CQL parse
+    tree. If the CQL is invalid, an error code from the SRU Diagnostics List
+    will be returned.
 
 XCQL
     CQL has an XML representation which you can generate from a CQL parse
